@@ -6,6 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 const app = express();
+const PORT = 3000;
 
 // Configurar uploads
 const upload = multer({ dest: 'uploads/' });
@@ -21,7 +22,7 @@ app.post('/convert', upload.single('file'), async (req, res) => {
     const { value: html } = await mammoth.convertToHtml({ path: docxPath });
 
     // Gerar PDF com Puppeteer
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch();
     const page = await browser.newPage();
     await page.setContent(html, { waitUntil: 'networkidle0' });
 
@@ -43,5 +44,6 @@ app.post('/convert', upload.single('file'), async (req, res) => {
   }
 });
 
-// Exportar a função para o Vercel
-export default app;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});

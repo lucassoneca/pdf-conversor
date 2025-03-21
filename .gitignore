@@ -1,0 +1,23 @@
+# Ignorar o diretório node_modules
+node_modules/
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de ambiente
+.env
+
+# Ignorar arquivos de sistema (MacOS)
+.DS_Store
+
+# Ignorar arquivos de sistema (Windows)
+Thumbs.db
+
+# Ignorar arquivos de build
+/dist
+/build
+
+# Ignorar arquivos de depuração
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
